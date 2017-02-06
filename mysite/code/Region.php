@@ -7,8 +7,22 @@ class Region extends DataObject {
 	);
 
 	private static $has_one = array (
-		'Photo' => 'Image'
+		'Photo' => 'Image',
+		'RegionsPage' => 'RegionsPage'
 	);
+
+	private static $summary_fields = array (
+		'GridThumbnail' => '',
+		'Title' => 'Title of region',
+		'Description' => 'Short description'
+	);
+
+	public function getGridThumbnail() {
+		if($this->Photo()->exists()) {
+			return $this->Photo()->setWidth(100);
+		}
+		return '(no image)';
+	}
 
 	public function getCMSFields() {
 		$fields = FieldList::create(
@@ -18,7 +32,7 @@ class Region extends DataObject {
 		);
 
 		$uploader->setFolderName('region-photos');
-		$uploader->getValidator()->setAllowedExtenions(array(
+		$uploader->getValidator()->setAllowedExtensions(array(
 			'png','gif','jpeg','jpg'
 		));
 

@@ -1,4 +1,12 @@
 ### SILVERSTRIPE START ###
+<IfModule mod_rewrite.c>
+    # Turn off index.php handling requests to the homepage fixes issue in apache >=2.4
+    <IfModule mod_dir.c>
+        DirectoryIndex disabled
+    </IfModule>
+# ------ # {#}
+</IfModule>
+
 # Deny access to templates (but allow from localhost)
 <Files *.ss>
 	Order deny,allow

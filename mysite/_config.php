@@ -8,8 +8,8 @@ $databaseConfig = array(
 	'type' => 'MySQLDatabase',
 	'server' => '127.0.0.1',
 	'username' => 'root',
-	'password' => 'password',
-	'database' => 'SS_mysite',
+	'password' => '',
+	'database' => 'silverstripe_starter',
 	'path' => ''
 );
 
